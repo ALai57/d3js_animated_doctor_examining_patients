@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="./bootstrap.min.css"/>
+		
+		<meta name="generator" content="BBEdit">
+
+		<script src="./d3.min.js"> </script>
+		<!-- <script src="./d3-tip.js"> </script> -->
+		<script src="./jquery-3.2.1.min.js"> </script>
+		<script src="./bootstrap.min.js"> </script>
+		<!-- <script src="./d3.rebind.js"></script> -->
+		<style>
+		h1 { font-weight: bold; }
+		h3 { font-weight: bold; }
+		h4 { font-weight: bold; font-style: italic; }
+		</style>
+	</head>
+	
+	<body>	
+		<script src="./tableFunctions.js"></script>
+		<script src="./patientData.js"></script>
+		
+		<script>
+			//Inputs and configuration
+			
+			//SVG drawing size
+			var wd = 500;
+			var ht = 400;
+			
+			var x = d3.scaleLinear().domain([-2, 10])
+									.range([0, wd]);
+			var y = d3.scaleLinear().domain([5,-5])
+									.range([0, ht]);
+									
+			function translate(xIn,yIn){
+				return "translate(" + xIn + "," + yIn + ")";
+			}
+			function translateRotate(xIn,yIn,rIn,wdth,hgt){
+				return "translate(" + xIn + "," + yIn + ")" + "rotate(" + rIn + "," + wdth + "," + hgt + ")";;
+			}
+			
+			
+			function calcWidth(w){
+				return Math.abs(x(w)-x(0));
+			}
+			function calcHeight(h){
+				return Math.abs(y(h)-y(0));
+			}
+			
+			
+		</script>
+		
+
+		<div class="container"> 
+		<div class = "row"> <div class="col-md-6 col-md-offset-3">
+			<h1>How to collect data to train a neural network</h1>
+			
+
+			<p>Training a neural network requires data, which we need to collect or find in a database.</p>
+			<p>If we wanted to collect patient data to train our own neural network, we could hire a doctor. In the example below, the doctor will examine 10 patients, measuring their heart rate (HR), temperature (T), and whether they were sick or not (S).</p>
+			<div id='DoctorDiv'>
+				<p><strong>[Click the doctor to collect data from each patient!]</strong></p>
+				<script src="./doctor.js"></script>
+			</div>
+			
+		</div></div>
+		</div>
+		
+
+	</body>
+	
+</html>
